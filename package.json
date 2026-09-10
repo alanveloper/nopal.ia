@@ -7,9 +7,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "functions:deploy": "supabase functions deploy",
+    "db:pull": "supabase db pull"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2",
     "@vitejs/plugin-react": "latest",
     "openai": "^7.13.0",
     "react": "latest",
