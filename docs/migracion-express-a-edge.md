@@ -41,7 +41,7 @@ model: process.env.OPENAI_MODEL ?? 'gpt-5.6-luna'
 
 `gpt-5.6-luna` no es un modelo real: si `OPENAI_MODEL` no está definido, la
 llamada responde 404. Las Edge Functions usan `MODEL_CHAT` con default
-`gpt-4o-mini`, `MODEL_REPORTE` con `gpto-4o` y `MODEL_EMBED` con
+`gpt-4o-mini`, `MODEL_REPORTE` con `gpt-4o` y `MODEL_EMBED` con
 `text-embedding-3-small`, todos configurables por secreto.
 
 ## Estructura de las funciones
