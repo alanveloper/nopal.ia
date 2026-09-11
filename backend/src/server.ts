@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import cors from 'cors'
 import express, { type Request, type Response } from 'express'
-import OpenAI from 'openai'
+import OpenAI, { toFile } from 'openai'
 
 type ChatMessage = {
   role: 'user' | 'assistant'
@@ -41,6 +41,8 @@ if (!openaiApiKey) {
 }
 
 const openai = new OpenAI({ apiKey: openaiApiKey })
+const elevenLabsApiKey = process.env.ELEVENLABS_API_KEY
+const elevenLabsVoiceId = process.env.ELEVENLABS_VOICE_ID
 
 const SYSTEM_PROMPT = `# ROL
 
@@ -566,6 +568,76 @@ function isOrientationResponse(value: unknown): value is OrientationResponse {
 
 app.get('/api/health', (_req: Request, res: Response) => {
   res.json({ ok: true, service: 'enfoca-backend' })
+})
+
+app.post('/api/transcribe', express.raw({ type: 'audio/*', limit: '20mb' }), async (req: Request, res: Response) => {
+  if (!Buffer.isBuffer(req.body) || req.body.length === 0) {
+    res.status(400).json({ error: 'No recibimos un audio válido para transcribir.' })
+    return
+  }
+
+  try {
+    const contentType = req.headers['content-type'] ?? 'audio/webm'
+    const file = await toFile(req.body, 'respuesta.webm', { type: contentType })
+    const transcription = await openai.audio.transcriptions.create({
+      file,
+      model: process.env.OPENAI_TRANSCRIPTION_MODEL ?? 'gpt-4o-mini-transcribe',
+      language: 'es',
+    })
+    res.json({ text: transcription.text })
+  } catch (error) {
+    console.error('Error al transcribir el audio:', error)
+    res.status(502).json({ error: 'No fue posible transcribir el audio. Intenta nuevamente.' })
+  }
+})
+
+app.post('/api/speech', async (req: Request, res: Response) => {
+  const text = req.body?.text
+  if (typeof text !== 'string' || !text.trim() || text.length > 4000) {
+    res.status(400).json({ error: 'El texto de voz debe tener entre 1 y 4,000 caracteres.' })
+    return
+  }
+
+  if (!elevenLabsApiKey || !elevenLabsVoiceId) {
+    res.status(503).json({ error: 'Configura ELEVENLABS_API_KEY y ELEVENLABS_VOICE_ID en el backend para usar la voz de Enfoca.' })
+    return
+  }
+
+  try {
+    const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(elevenLabsVoiceId)}/stream`, {
+      method: 'POST',
+      headers: {
+        Accept: 'audio/mpeg',
+        'Content-Type': 'application/json',
+        'xi-api-key': elevenLabsApiKey,
+      },
+      body: JSON.stringify({
+        text: text.trim(),
+        model_id: process.env.ELEVENLABS_MODEL_ID ?? 'eleven_multilingual_v2',
+        output_format: 'mp3_44100_128',
+        voice_settings: {
+          stability: 0.45,
+          similarity_boost: 0.75,
+          style: 0.2,
+          use_speaker_boost: true,
+        },
+      }),
+    })
+
+    if (!response.ok) {
+      console.error('Error de ElevenLabs:', response.status, await response.text())
+      res.status(502).json({ error: 'No fue posible generar la voz de Enfoca.' })
+      return
+    }
+
+    const audio = Buffer.from(await response.arrayBuffer())
+    res.setHeader('Content-Type', 'audio/mpeg')
+    res.setHeader('Cache-Control', 'no-store')
+    res.send(audio)
+  } catch (error) {
+    console.error('Error al consultar ElevenLabs:', error)
+    res.status(502).json({ error: 'No fue posible conectar con el servicio de voz.' })
+  }
 })
 
 app.post('/api/chat', async (req: Request, res: Response) => {
