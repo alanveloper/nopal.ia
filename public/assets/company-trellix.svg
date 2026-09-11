@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 90" role="img" aria-labelledby="title">
+  <title id="title">Trellix</title>
+  <g transform="translate(11 16)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"><path d="M7 15 22 5l15 10-15 10Z" stroke="#69d4bd"/><path d="m22 25 15 10-15 10L7 35Z" stroke="#65a8e8"/><path d="m37 15 15 10-15 10-15-10Z" stroke="#b481ef"/></g>
+  <text x="78" y="58" fill="#f5f6f8" font-family="Arial, Helvetica, sans-serif" font-size="47" font-weight="700" letter-spacing="-2.5">Trellix</text>
+</svg>

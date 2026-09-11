@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" role="img" aria-labelledby="title description">
+  <title id="title">Mascota de NeuroCareer</title>
+  <desc id="description">Un cerebrito rosa sonriente.</desc>
+  <defs>
+    <linearGradient id="brainPink" x1="72" y1="67" x2="275" y2="279" gradientUnits="userSpaceOnUse"><stop stop-color="#FFAACD"/><stop offset=".5" stop-color="#F67CB4"/><stop offset="1" stop-color="#D94D91"/></linearGradient>
+  </defs>
+  <path d="M88 236c-22-9-36-31-33-55 2-16 10-29 23-38-2-32 22-59 54-60 14-24 45-34 70-20 22-18 56-11 69 15 31 1 57 26 57 57 0 14-5 27-14 37 11 30-5 63-36 72-9 30-39 46-68 37-16 17-45 19-65 4-24 7-48-7-57-29Z" fill="url(#brainPink)" stroke="#1B1720" stroke-width="10" stroke-linejoin="round"/>
+  <g fill="none" stroke="#C94B88" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity=".72"><path d="M91 146c10-17 31-22 47-11 5-23 28-35 49-24 11-16 33-18 47-5"/><path d="M81 192c11-12 31-14 44-3 7-16 28-22 43-12 11-15 33-15 45 0 15-11 37-6 45 10"/><path d="M102 230c13-9 31-8 42 4 13-11 33-9 44 5 12-13 34-14 47-2 10-10 27-11 39-1"/><path d="M190 111c-8 11-8 24 0 35m-22 32c-7 12-7 24 0 36m43-37c8 12 8 25 0 37"/></g>
+  <path d="M115 113c14-14 34-17 51-7" fill="none" stroke="#FFD5E8" stroke-width="10" stroke-linecap="round" opacity=".76"/>
+  <g fill="#1B1720"><circle cx="138" cy="193" r="8"/><circle cx="221" cy="193" r="8"/></g><path d="M158 218c12 15 29 15 42 0" fill="none" stroke="#1B1720" stroke-width="8" stroke-linecap="round"/><ellipse cx="111" cy="213" rx="13" ry="7" fill="#FFB1CE" opacity=".78"/><ellipse cx="249" cy="213" rx="13" ry="7" fill="#FFB1CE" opacity=".78"/>
+</svg>

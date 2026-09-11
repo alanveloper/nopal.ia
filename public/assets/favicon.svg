@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 58 300 245" role="img" aria-label="NeuroCareer">
+  <defs><linearGradient id="pink" x1="80" y1="80" x2="280" y2="280" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB1D1"/><stop offset=".55" stop-color="#F57DB6"/><stop offset="1" stop-color="#D94D91"/></linearGradient></defs>
+  <path d="M88 236c-22-9-36-31-33-55 2-16 10-29 23-38-2-32 22-59 54-60 14-24 45-34 70-20 22-18 56-11 69 15 31 1 57 26 57 57 0 14-5 27-14 37 11 30-5 63-36 72-9 30-39 46-68 37-16 17-45 19-65 4-24 7-48-7-57-29Z" fill="url(#pink)" stroke="#1B1720" stroke-width="10" stroke-linejoin="round"/>
+  <g fill="none" stroke="#C94B88" stroke-width="8" stroke-linecap="round" opacity=".7"><path d="M91 146c10-17 31-22 47-11 5-23 28-35 49-24 11-16 33-18 47-5"/><path d="M81 192c11-12 31-14 44-3 7-16 28-22 43-12 11-15 33-15 45 0 15-11 37-6 45 10"/><path d="M190 111c-8 11-8 24 0 35m-22 32c-7 12-7 24 0 36m43-37c8 12 8 25 0 37"/></g>
+  <path d="M115 113c14-14 34-17 51-7" fill="none" stroke="#FFD5E8" stroke-width="10" stroke-linecap="round" opacity=".76"/>
+  <g fill="#1B1720"><circle cx="138" cy="193" r="8"/><circle cx="221" cy="193" r="8"/></g><path d="M158 218c12 15 29 15 42 0" fill="none" stroke="#1B1720" stroke-width="8" stroke-linecap="round"/>
+</svg>
